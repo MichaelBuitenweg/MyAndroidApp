@@ -37,6 +37,11 @@ warn () {
     echo "$*"
 }
 
+die () {
+    echo "$*" >&2
+    exit 1
+}
+
 # OS specific support functions.  $var _must_ be set to either true or false.
 cygwin=false
 msys=false
@@ -97,9 +102,7 @@ if $cygwin ; then
 fi
 
 # Split up the JVM_OPTS And GRADLE_OPTS values into an array, following the shell quoting and substitution rules
-function splitJvmOpts() {
-    JVM_OPTS=($*)
-}
+# Removed unused bash-specific helper that caused array syntax issues in /bin/sh
 
 # Escape application args
 save () {
@@ -107,7 +110,7 @@ save () {
 $ s/$/' \\ \\n/" ; done
     echo " "
 }
-APP_ARGS=$(save "$@")
+APP_ARGS=`save "$@"`
 
 # Collect all arguments for the java command, following the shell quoting and substitution rules
 eval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$APP_ARGS"
