@@ -22,6 +22,8 @@ import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.Locale
+import androidx.appcompat.app.AlertDialog
+import java.time.format.DateTimeFormatter
 
 class CalendarFragment : Fragment() {
     private var _binding: FragmentCalendarBinding? = null
@@ -79,8 +81,15 @@ class CalendarFragment : Fragment() {
             }
             override fun bind(container: DayContainer, data: com.kizitonwose.calendar.core.CalendarDay) {
                 container.date = data.date
-                val dayText = if (data.position == DayPosition.MonthDate) data.date.dayOfMonth.toString() else ""
+                val inMonth = data.position == DayPosition.MonthDate
+                val dayText = if (inMonth) data.date.dayOfMonth.toString() else ""
                 container.dayBinding.textDayNumber.text = dayText
+                // Highlight today
+                if (inMonth && data.date == LocalDate.now()) {
+                    container.dayBinding.textDayNumber.setTextColor(resources.getColor(android.R.color.holo_blue_dark, null))
+                } else {
+                    container.dayBinding.textDayNumber.setTextColor(resources.getColor(android.R.color.black, null))
+                }
                 val stripesView = container.dayBinding.stripesView
                 if (dayText.isEmpty()) {
                     stripesView.setStripeColors(emptyList())
@@ -91,6 +100,11 @@ class CalendarFragment : Fragment() {
                     carViewModel.uiState.value.cars.find { it.id == r.carId }?.color
                 }.map { parseColorSafe(it) }
                 stripesView.setStripeColors(colors)
+                if (resList.size > 15) {
+                    stripesView.contentDescription = "+${resList.size - 15} more reservations"
+                } else {
+                    stripesView.contentDescription = null
+                }
                 // Double tap stripes to edit first reservation (optional enhancement later)
             }
         }
@@ -98,9 +112,30 @@ class CalendarFragment : Fragment() {
 
     private fun showDayReservationsDialog(date: LocalDate) {
         val reservations = reservationViewModel.uiState.value.reservations.filter { overlaps(it, date) }
-        if (reservations.isEmpty()) return
-        // For now just open first reservation to edit
-        showReservationDialog(reservations.first())
+        if (reservations.isEmpty()) {
+            showReservationDialog(null, date.toEpochDayMillis())
+            return
+        }
+        val cars = carViewModel.uiState.value.cars
+        val fmt = DateTimeFormatter.ofPattern("MMM d")
+        val items = reservations.map { r ->
+            val car = cars.find { it.id == r.carId }
+            val start = millisToLocalDate(r.startDate)
+            val end = millisToLocalDate(r.endDate)
+            val range = if (start == end) start.format(fmt) else start.format(fmt) + " - " + end.format(fmt)
+            (car?.name ?: "Car") + " (" + (car?.licenseNumber ?: "?") + ") " + range
+        } + listOf("+ Add new reservation")
+        AlertDialog.Builder(requireContext())
+            .setTitle(date.format(DateTimeFormatter.ofPattern("EEEE, MMM d")))
+            .setItems(items.toTypedArray()) { _, which ->
+                if (which == reservations.size) {
+                    showReservationDialog(null, date.toEpochDayMillis())
+                } else {
+                    showReservationDialog(reservations[which])
+                }
+            }
+            .setNegativeButton("Close", null)
+            .show()
     }
 
     private fun overlaps(res: com.example.myandroidapp.model.Reservation, date: LocalDate): Boolean {
