@@ -1,50 +1,54 @@
 [
     {
-        "merged": "com.example.myandroidapp-merged_res-44:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.myandroidapp-main-46:/drawable/ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "com.example.myandroidapp-merged_res-44:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.myandroidapp-main-46:/mipmap-anydpi-v26/ic_launcher.xml"
-    },
-    {
-        "merged": "com.example.myandroidapp-merged_res-44:/layout_item_car.xml.flat",
-        "source": "com.example.myandroidapp-main-46:/layout/item_car.xml"
+        "merged": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-merged_res-44:/layout_item_car.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-main-46:/layout/item_car.xml"
     },
     {
         "merged": "com.example.myandroidapp-merged_res-44:/layout_fragment_calendar.xml.flat",
         "source": "com.example.myandroidapp-main-46:/layout/fragment_calendar.xml"
     },
     {
-        "merged": "com.example.myandroidapp-merged_res-44:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.myandroidapp-main-46:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-merged_res-44:/layout_fragment_calendar.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-main-46:/layout/fragment_calendar.xml"
     },
     {
-        "merged": "com.example.myandroidapp-merged_res-44:/layout_dialog_reservation.xml.flat",
-        "source": "com.example.myandroidapp-main-46:/layout/dialog_reservation.xml"
+        "merged": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-merged_res-44:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-main-46:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.myandroidapp-merged_res-44:/layout_activity_main.xml.flat",
-        "source": "com.example.myandroidapp-main-46:/layout/activity_main.xml"
+        "merged": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-merged_res-44:/layout_day_cell.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-main-46:/layout/day_cell.xml"
     },
     {
-        "merged": "com.example.myandroidapp-merged_res-44:/layout_item_day_reservations.xml.flat",
-        "source": "com.example.myandroidapp-main-46:/layout/item_day_reservations.xml"
+        "merged": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-merged_res-44:/layout_activity_main.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-main-46:/layout/activity_main.xml"
     },
     {
-        "merged": "com.example.myandroidapp-merged_res-44:/layout_fragment_cars.xml.flat",
-        "source": "com.example.myandroidapp-main-46:/layout/fragment_cars.xml"
+        "merged": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-merged_res-44:/layout_item_calendar_day.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-main-46:/layout/item_calendar_day.xml"
     },
     {
-        "merged": "com.example.myandroidapp-merged_res-44:/layout_item_calendar_day.xml.flat",
-        "source": "com.example.myandroidapp-main-46:/layout/item_calendar_day.xml"
+        "merged": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-merged_res-44:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-main-46:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "com.example.myandroidapp-merged_res-44:/layout_day_cell.xml.flat",
-        "source": "com.example.myandroidapp-main-46:/layout/day_cell.xml"
+        "merged": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-merged_res-44:/layout_item_day_reservations.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-main-46:/layout/item_day_reservations.xml"
     },
     {
-        "merged": "com.example.myandroidapp-merged_res-44:/layout_dialog_add_car.xml.flat",
-        "source": "com.example.myandroidapp-main-46:/layout/dialog_add_car.xml"
+        "merged": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-merged_res-44:/layout_dialog_add_car.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-main-46:/layout/dialog_add_car.xml"
+    },
+    {
+        "merged": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-merged_res-44:/layout_fragment_cars.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-main-46:/layout/fragment_cars.xml"
+    },
+    {
+        "merged": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-merged_res-44:/layout_dialog_reservation.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-main-46:/layout/dialog_reservation.xml"
+    },
+    {
+        "merged": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-merged_res-44:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-main-46:/mipmap-anydpi-v26/ic_launcher_round.xml"
     }
 ]
