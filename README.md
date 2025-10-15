@@ -27,9 +27,22 @@ Open the project root (`MyAndroidApp`) in Android Studio and let it sync. Then r
 
 Or via command line (with proper ANDROID_HOME / sdkmanager installed):
 
+Option A (if you already have a full Android toolchain / Android Studio):
 ```
-./gradlew assembleDebug
+./gradlew :app:assembleDebug
 ```
+
+Option B (inside a plain container / Codespace without Android SDK):
+```
+chmod +x scripts/install-android-sdk.sh scripts/build-debug.sh
+./scripts/build-debug.sh
+```
+This will:
+1. Download minimal command line tools
+2. Accept licenses
+3. Install platform 34 + build tools 34.0.0
+4. Generate the Gradle wrapper if missing
+5. Build the debug APK
 
 APK output will be under `app/build/outputs/apk/debug/`.
 

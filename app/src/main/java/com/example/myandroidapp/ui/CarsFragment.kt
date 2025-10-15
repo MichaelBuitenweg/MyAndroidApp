@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myandroidapp.databinding.FragmentCarsBinding
 import com.example.myandroidapp.model.Car
 import com.example.myandroidapp.viewmodel.CarViewModel
+import com.example.myandroidapp.MainActivity
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

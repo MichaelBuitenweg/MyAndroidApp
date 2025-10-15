@@ -13,6 +13,7 @@ import com.example.myandroidapp.model.Car
 import com.example.myandroidapp.model.Reservation
 import com.example.myandroidapp.viewmodel.CarViewModel
 import com.example.myandroidapp.viewmodel.ReservationViewModel
+import com.example.myandroidapp.MainActivity
 import java.util.*
 
 class ReservationDialog(private val reservation: Reservation?, private val dayStart: Long?) : DialogFragment() {
