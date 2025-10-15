@@ -20,7 +20,7 @@ jobs:
           java-version: 17
 
       - name: Cache Gradle
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.gradle/caches
@@ -30,17 +30,18 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-        working-directory: MyAndroidApp
+        run: chmod +x ./gradlew
 
       - name: Build Debug APK
-        working-directory: MyAndroidApp
         run: ./gradlew :app:assembleDebug --stacktrace
+
+      - name: Show APK size
+        run: ls -lh app/build/outputs/apk/debug/ && du -h app/build/outputs/apk/debug/app-debug.apk || true
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-debug-apk
-          path: MyAndroidApp/app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 14
