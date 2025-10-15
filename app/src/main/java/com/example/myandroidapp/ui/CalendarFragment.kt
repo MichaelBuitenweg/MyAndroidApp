@@ -41,7 +41,13 @@ class CalendarFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        setupCalendar()
+        try {
+            setupCalendar()
+        } catch (t: Throwable) {
+            android.util.Log.e("CalendarFragment", "Calendar setup failed", t)
+            // Minimal fallback: show a simple error text so app doesn't just close silently
+            binding.textMonth.text = "Calendar error"
+        }
         binding.buttonPrevMonth.setOnClickListener { updateMonth(currentMonth.minusMonths(1)) }
         binding.buttonNextMonth.setOnClickListener { updateMonth(currentMonth.plusMonths(1)) }
 
@@ -54,8 +60,9 @@ class CalendarFragment : Fragment() {
     private fun setupCalendar() {
         val startMonth = currentMonth.minusMonths(12)
         val endMonth = currentMonth.plusMonths(12)
-        binding.calendarView.setup(startMonth, endMonth, firstDayOfWeek)
-        binding.calendarView.scrollToMonth(currentMonth)
+    val cv = binding.calendarView
+    cv.setup(startMonth, endMonth, firstDayOfWeek)
+    cv.scrollToMonth(currentMonth)
         binding.textMonth.text = monthLabel(currentMonth)
 
         class DayContainer(view: View) : ViewContainer(view) {
@@ -95,9 +102,11 @@ class CalendarFragment : Fragment() {
                     stripesView.setStripeColors(emptyList())
                     return
                 }
-                val resList = reservationViewModel.uiState.value.reservations.filter { overlaps(it, data.date) }
+                val state = reservationViewModel.uiState.value
+                val resList = state.reservations.filter { overlaps(it, data.date) }
                 val colors = resList.mapNotNull { r ->
-                    carViewModel.uiState.value.cars.find { it.id == r.carId }?.color
+                    val carsState = carViewModel.uiState.value
+                    carsState.cars.find { it.id == r.carId }?.color
                 }.map { parseColorSafe(it) }
                 stripesView.setStripeColors(colors)
                 if (resList.size > 15) {
