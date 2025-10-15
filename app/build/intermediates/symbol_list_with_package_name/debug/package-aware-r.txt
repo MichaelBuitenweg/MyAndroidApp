@@ -3083,10 +3083,7 @@ id buttonPanel
 id buttonPickEnd
 id buttonPickStart
 id buttonPrevMonth
-<<<<<<< HEAD
 id calendarView
-=======
->>>>>>> 29e7c6c (added calender and colors)
 id cancel_button
 id center
 id centerCrop

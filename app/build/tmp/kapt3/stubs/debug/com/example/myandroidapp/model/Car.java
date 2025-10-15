@@ -9,19 +9,19 @@ import androidx.room.PrimaryKey;
 public final class Car {
     @androidx.room.PrimaryKey(autoGenerate = true)
     private final long id = 0L;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final java.lang.String name = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final java.lang.String model = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final java.lang.String licenseNumber = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final java.lang.String color = null;
     
-    public Car(long id, @org.jetbrains.annotations.NotNull
-    java.lang.String name, @org.jetbrains.annotations.NotNull
-    java.lang.String model, @org.jetbrains.annotations.NotNull
-    java.lang.String licenseNumber, @org.jetbrains.annotations.NotNull
+    public Car(long id, @org.jetbrains.annotations.NotNull()
+    java.lang.String name, @org.jetbrains.annotations.NotNull()
+    java.lang.String model, @org.jetbrains.annotations.NotNull()
+    java.lang.String licenseNumber, @org.jetbrains.annotations.NotNull()
     java.lang.String color) {
         super();
     }
@@ -30,22 +30,22 @@ public final class Car {
         return 0L;
     }
     
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public final java.lang.String getName() {
         return null;
     }
     
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public final java.lang.String getModel() {
         return null;
     }
     
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public final java.lang.String getLicenseNumber() {
         return null;
     }
     
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public final java.lang.String getColor() {
         return null;
     }
@@ -54,48 +54,48 @@ public final class Car {
         return 0L;
     }
     
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public final java.lang.String component2() {
         return null;
     }
     
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public final java.lang.String component3() {
         return null;
     }
     
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public final java.lang.String component4() {
         return null;
     }
     
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public final java.lang.String component5() {
         return null;
     }
     
-    @org.jetbrains.annotations.NotNull
-    public final com.example.myandroidapp.model.Car copy(long id, @org.jetbrains.annotations.NotNull
-    java.lang.String name, @org.jetbrains.annotations.NotNull
-    java.lang.String model, @org.jetbrains.annotations.NotNull
-    java.lang.String licenseNumber, @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
+    public final com.example.myandroidapp.model.Car copy(long id, @org.jetbrains.annotations.NotNull()
+    java.lang.String name, @org.jetbrains.annotations.NotNull()
+    java.lang.String model, @org.jetbrains.annotations.NotNull()
+    java.lang.String licenseNumber, @org.jetbrains.annotations.NotNull()
     java.lang.String color) {
         return null;
     }
     
-    @java.lang.Override
-    public boolean equals(@org.jetbrains.annotations.Nullable
+    @java.lang.Override()
+    public boolean equals(@org.jetbrains.annotations.Nullable()
     java.lang.Object other) {
         return false;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public int hashCode() {
         return 0;
     }
     
-    @java.lang.Override
-    @org.jetbrains.annotations.NotNull
+    @java.lang.Override()
+    @org.jetbrains.annotations.NotNull()
     public java.lang.String toString() {
         return null;
     }

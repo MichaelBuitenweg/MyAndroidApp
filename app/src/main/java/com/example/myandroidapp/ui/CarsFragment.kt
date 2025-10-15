@@ -42,9 +42,9 @@ class CarsFragment : Fragment() {
 
     private fun showAddCarDialog() {
         val dialog = AddCarDialog { name, model, license, color ->
-            carViewModel.addCar(name, model, license, color) { success, error ->
+            carViewModel.addCar(name, model, license, color) { success, _ ->
                 if (!success) {
-                    // TODO show error via Snackbar/Toast
+                    // TODO: surface add car failure (e.g., Snackbar). For now we ignore to keep UI minimal.
                 }
             }
         }

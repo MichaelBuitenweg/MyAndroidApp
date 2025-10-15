@@ -23,7 +23,6 @@ public final class FragmentCalendarBinding implements ViewBinding {
 
   @NonNull
   public final Button buttonNextMonth;
-<<<<<<< HEAD
 
   @NonNull
   public final Button buttonPrevMonth;
@@ -36,29 +35,11 @@ public final class FragmentCalendarBinding implements ViewBinding {
 
   private FragmentCalendarBinding(@NonNull LinearLayout rootView, @NonNull Button buttonNextMonth,
       @NonNull Button buttonPrevMonth, @NonNull CalendarView calendarView,
-=======
-
-  @NonNull
-  public final Button buttonPrevMonth;
-
-  @NonNull
-  public final RecyclerView recyclerCalendar;
-
-  @NonNull
-  public final TextView textMonth;
-
-  private FragmentCalendarBinding(@NonNull LinearLayout rootView, @NonNull Button buttonNextMonth,
-      @NonNull Button buttonPrevMonth, @NonNull RecyclerView recyclerCalendar,
->>>>>>> 29e7c6c (added calender and colors)
       @NonNull TextView textMonth) {
     this.rootView = rootView;
     this.buttonNextMonth = buttonNextMonth;
     this.buttonPrevMonth = buttonPrevMonth;
-<<<<<<< HEAD
     this.calendarView = calendarView;
-=======
-    this.recyclerCalendar = recyclerCalendar;
->>>>>>> 29e7c6c (added calender and colors)
     this.textMonth = textMonth;
   }
 
@@ -92,7 +73,6 @@ public final class FragmentCalendarBinding implements ViewBinding {
       id = R.id.buttonNextMonth;
       Button buttonNextMonth = ViewBindings.findChildViewById(rootView, id);
       if (buttonNextMonth == null) {
-<<<<<<< HEAD
         break missingId;
       }
 
@@ -108,23 +88,6 @@ public final class FragmentCalendarBinding implements ViewBinding {
         break missingId;
       }
 
-=======
-        break missingId;
-      }
-
-      id = R.id.buttonPrevMonth;
-      Button buttonPrevMonth = ViewBindings.findChildViewById(rootView, id);
-      if (buttonPrevMonth == null) {
-        break missingId;
-      }
-
-      id = R.id.recyclerCalendar;
-      RecyclerView recyclerCalendar = ViewBindings.findChildViewById(rootView, id);
-      if (recyclerCalendar == null) {
-        break missingId;
-      }
-
->>>>>>> 29e7c6c (added calender and colors)
       id = R.id.textMonth;
       TextView textMonth = ViewBindings.findChildViewById(rootView, id);
       if (textMonth == null) {
@@ -132,11 +95,7 @@ public final class FragmentCalendarBinding implements ViewBinding {
       }
 
       return new FragmentCalendarBinding((LinearLayout) rootView, buttonNextMonth, buttonPrevMonth,
-<<<<<<< HEAD
           calendarView, textMonth);
-=======
-          recyclerCalendar, textMonth);
->>>>>>> 29e7c6c (added calender and colors)
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

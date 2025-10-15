@@ -17,10 +17,7 @@ id buttonNextMonth
 id buttonPickEnd
 id buttonPickStart
 id buttonPrevMonth
-<<<<<<< HEAD
 id calendarView
-=======
->>>>>>> 29e7c6c (added calender and colors)
 id colorSwatch
 id inputLicense
 id inputModel
@@ -29,10 +26,7 @@ id recyclerCars
 id reservationDots
 id spinnerCar
 id spinnerColor
-<<<<<<< HEAD
 id stripesView
-=======
->>>>>>> 29e7c6c (added calender and colors)
 id tabLayout
 id textDate
 id textDayNumber
