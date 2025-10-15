@@ -24,8 +24,17 @@
         "source": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-main-46:/layout/activity_main.xml"
     },
     {
+<<<<<<< HEAD
         "merged": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-merged_res-44:/layout_item_calendar_day.xml.flat",
         "source": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-main-46:/layout/item_calendar_day.xml"
+=======
+        "merged": "com.example.myandroidapp-merged_res-43:/layout_item_calendar_day.xml.flat",
+        "source": "com.example.myandroidapp-main-45:/layout/item_calendar_day.xml"
+    },
+    {
+        "merged": "com.example.myandroidapp-merged_res-43:/layout_activity_main.xml.flat",
+        "source": "com.example.myandroidapp-main-45:/layout/activity_main.xml"
+>>>>>>> 29e7c6c (added calender and colors)
     },
     {
         "merged": "/home/codespace/.gradle/daemon/8.2/com.example.myandroidapp-merged_res-44:/mipmap-anydpi-v26_ic_launcher.xml.flat",
