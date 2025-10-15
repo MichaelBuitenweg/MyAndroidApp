@@ -17,15 +17,16 @@ id buttonNextMonth
 id buttonPickEnd
 id buttonPickStart
 id buttonPrevMonth
+id calendarView
 id colorSwatch
 id inputLicense
 id inputModel
 id inputName
-id recyclerCalendar
 id recyclerCars
 id reservationDots
 id spinnerCar
 id spinnerColor
+id stripesView
 id tabLayout
 id textDate
 id textDayNumber
@@ -38,6 +39,7 @@ id textReservations
 id textStartDate
 id viewPager
 layout activity_main
+layout day_cell
 layout dialog_add_car
 layout dialog_reservation
 layout fragment_calendar

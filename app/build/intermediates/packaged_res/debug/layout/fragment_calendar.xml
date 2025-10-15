@@ -30,8 +30,8 @@
             android:text="&#62;" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerCalendar"
+    <com.kizitonwose.calendar.view.CalendarView
+        android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />

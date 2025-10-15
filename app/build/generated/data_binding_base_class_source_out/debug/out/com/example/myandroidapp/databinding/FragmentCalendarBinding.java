@@ -9,10 +9,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.myandroidapp.R;
+import com.kizitonwose.calendar.view.CalendarView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -28,18 +28,18 @@ public final class FragmentCalendarBinding implements ViewBinding {
   public final Button buttonPrevMonth;
 
   @NonNull
-  public final RecyclerView recyclerCalendar;
+  public final CalendarView calendarView;
 
   @NonNull
   public final TextView textMonth;
 
   private FragmentCalendarBinding(@NonNull LinearLayout rootView, @NonNull Button buttonNextMonth,
-      @NonNull Button buttonPrevMonth, @NonNull RecyclerView recyclerCalendar,
+      @NonNull Button buttonPrevMonth, @NonNull CalendarView calendarView,
       @NonNull TextView textMonth) {
     this.rootView = rootView;
     this.buttonNextMonth = buttonNextMonth;
     this.buttonPrevMonth = buttonPrevMonth;
-    this.recyclerCalendar = recyclerCalendar;
+    this.calendarView = calendarView;
     this.textMonth = textMonth;
   }
 
@@ -82,9 +82,9 @@ public final class FragmentCalendarBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.recyclerCalendar;
-      RecyclerView recyclerCalendar = ViewBindings.findChildViewById(rootView, id);
-      if (recyclerCalendar == null) {
+      id = R.id.calendarView;
+      CalendarView calendarView = ViewBindings.findChildViewById(rootView, id);
+      if (calendarView == null) {
         break missingId;
       }
 
@@ -95,7 +95,7 @@ public final class FragmentCalendarBinding implements ViewBinding {
       }
 
       return new FragmentCalendarBinding((LinearLayout) rootView, buttonNextMonth, buttonPrevMonth,
-          recyclerCalendar, textMonth);
+          calendarView, textMonth);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

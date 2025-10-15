@@ -13,22 +13,22 @@
 11-->/workspaces/codespaces-blank/MyAndroidApp/app/src/main/AndroidManifest.xml:20:22-64
 12
 13    <permission
-13-->[androidx.core:core:1.12.0] /home/codespace/.gradle/caches/transforms-3/ca8e10ff8805ca12450af7d0de46d87e/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+13-->[androidx.core:core:1.13.1] /home/codespace/.gradle/caches/transforms-3/e65573d4951e0cf74090bbe32c2f730f/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
 14        android:name="com.example.myandroidapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-14-->[androidx.core:core:1.12.0] /home/codespace/.gradle/caches/transforms-3/ca8e10ff8805ca12450af7d0de46d87e/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+14-->[androidx.core:core:1.13.1] /home/codespace/.gradle/caches/transforms-3/e65573d4951e0cf74090bbe32c2f730f/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
 15        android:protectionLevel="signature" />
-15-->[androidx.core:core:1.12.0] /home/codespace/.gradle/caches/transforms-3/ca8e10ff8805ca12450af7d0de46d87e/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+15-->[androidx.core:core:1.13.1] /home/codespace/.gradle/caches/transforms-3/e65573d4951e0cf74090bbe32c2f730f/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
 16
 17    <uses-permission android:name="com.example.myandroidapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-17-->[androidx.core:core:1.12.0] /home/codespace/.gradle/caches/transforms-3/ca8e10ff8805ca12450af7d0de46d87e/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
-17-->[androidx.core:core:1.12.0] /home/codespace/.gradle/caches/transforms-3/ca8e10ff8805ca12450af7d0de46d87e/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+17-->[androidx.core:core:1.13.1] /home/codespace/.gradle/caches/transforms-3/e65573d4951e0cf74090bbe32c2f730f/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+17-->[androidx.core:core:1.13.1] /home/codespace/.gradle/caches/transforms-3/e65573d4951e0cf74090bbe32c2f730f/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
 18
 19    <application
 19-->/workspaces/codespaces-blank/MyAndroidApp/app/src/main/AndroidManifest.xml:3:5-18:19
 20        android:allowBackup="true"
 20-->/workspaces/codespaces-blank/MyAndroidApp/app/src/main/AndroidManifest.xml:4:9-35
 21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-21-->[androidx.core:core:1.12.0] /home/codespace/.gradle/caches/transforms-3/ca8e10ff8805ca12450af7d0de46d87e/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+21-->[androidx.core:core:1.13.1] /home/codespace/.gradle/caches/transforms-3/e65573d4951e0cf74090bbe32c2f730f/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
 22        android:debuggable="true"
 23        android:extractNativeLibs="true"
 24        android:icon="@mipmap/ic_launcher"

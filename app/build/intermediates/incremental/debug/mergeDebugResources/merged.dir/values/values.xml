@@ -115,6 +115,31 @@
         <enum name="spline" value="0"/>
         <enum name="linear" value="1"/>
     </attr>
+    <attr format="enum" name="cv_daySize">
+        
+        <enum name="square" value="0"/>
+        
+        <enum name="rectangle" value="1"/>
+        
+        <enum name="seventhWidth" value="2"/>
+        
+        <enum name="freeForm" value="3"/>
+    </attr>
+    <attr format="reference" name="cv_dayViewResource"/>
+    <attr format="reference" name="cv_monthFooterResource"/>
+    <attr format="reference" name="cv_monthHeaderResource"/>
+    <attr format="string" name="cv_monthViewClass"/>
+    <attr format="enum" name="cv_orientation">
+        <enum name="horizontal" value="0"/>
+        <enum name="vertical" value="1"/>
+    </attr>
+    <attr format="enum" name="cv_outDateStyle">
+        
+        <enum name="endOfRow" value="0"/>
+        
+        <enum name="endOfGrid" value="1"/>
+    </attr>
+    <attr format="boolean" name="cv_scrollPaged"/>
     <attr format="integer" name="defaultDuration"/>
     <attr format="float" name="deltaPolarAngle"/>
     <attr format="float" name="deltaPolarRadius"/>
@@ -1683,7 +1708,7 @@
     <dimen name="notification_main_column_padding_top">10dp</dimen>
     <dimen name="notification_media_narrow_margin">@dimen/notification_content_margin_start</dimen>
     <dimen name="notification_right_icon_size">16dp</dimen>
-    <dimen name="notification_right_side_padding_top">2dp</dimen>
+    <dimen name="notification_right_side_padding_top">4dp</dimen>
     <dimen name="notification_small_icon_background_padding">3dp</dimen>
     <dimen name="notification_small_icon_size_as_large">24dp</dimen>
     <dimen name="notification_subtext_size">13sp</dimen>
@@ -10055,6 +10080,16 @@
         
         <attr format="boolean" name="allowStacking"/>
     </declare-styleable>
+    <declare-styleable name="CalendarView">
+        <attr name="cv_dayViewResource"/>
+        <attr name="cv_monthHeaderResource"/>
+        <attr name="cv_monthFooterResource"/>
+        <attr name="cv_outDateStyle"/>
+        <attr name="cv_monthViewClass"/>
+        <attr name="cv_orientation"/>
+        <attr name="cv_scrollPaged"/>
+        <attr name="cv_daySize"/>
+    </declare-styleable>
     <declare-styleable name="Capability">
         
         <attr format="reference" name="queryPatterns"/>
@@ -12426,6 +12461,74 @@
         
         <attr name="android:inflatedId"/>
         <attr name="android:id"/>
+    </declare-styleable>
+    <declare-styleable name="WeekCalendarView">
+        <attr name="cv_dayViewResource"/>
+
+        
+        <attr format="reference" name="cv_weekHeaderResource"/>
+
+        
+        <attr format="reference" name="cv_weekFooterResource"/>
+
+        
+        <attr format="string" name="cv_weekViewClass"/>
+
+        <attr name="cv_scrollPaged"/>
+        <attr name="cv_daySize"/>
+    </declare-styleable>
+    <declare-styleable name="YearCalendarView">
+        <attr name="cv_dayViewResource"/>
+        <attr name="cv_monthHeaderResource"/>
+        <attr name="cv_monthFooterResource"/>
+
+        
+        <attr format="reference" name="cv_yearHeaderResource"/>
+
+        
+        <attr format="reference" name="cv_yearFooterResource"/>
+
+        <attr name="cv_outDateStyle"/>
+        
+        <attr format="string" name="cv_yearViewClass"/>
+
+        <attr name="cv_monthViewClass"/>
+
+        
+        <attr format="integer" name="cv_monthColumns"/>
+
+        
+        <attr format="dimension" name="cv_monthHorizontalSpacing"/>
+
+        
+        <attr format="dimension" name="cv_monthVerticalSpacing"/>
+
+        
+        <attr format="enum" name="cv_monthHeight">
+            <!-- Each month's row height is determined by the [DaySize] value set on the calendar.
+            Effectively, this is `wrap-content` if the value is [DaySize.Square],
+            [DaySize.SeventhWidth], or [DaySize.FreeForm], and will be equal to the calendar height
+            divided by the number of rows if the value is [DaySize.Rectangle].
+
+            When used together with [DaySize.Rectangle], the calendar months and days will
+            uniformly stretch to fill the parent's height. -->
+            <enum name="followDaySize" value="0"/>
+
+            <!-- Each month's row height will be the calender height divided by the number
+            of rows on the calendar. This means that the calendar months will be distributed
+            uniformly to fill the parent's height. However, the day content height will
+            independently determine its height.
+
+            This allows you to spread the calendar months evenly across the screen while
+            using a `daySize` value of [DaySize.Square] if you want square day content
+            or [DaySize.SeventhWidth] if you want to set a specific height value for the
+            day content. -->
+            <enum name="fill" value="1"/>
+        </attr>
+
+        <attr name="cv_orientation"/>
+        <attr name="cv_scrollPaged"/>
+        <attr name="cv_daySize"/>
     </declare-styleable>
     <macro name="m3_comp_assist_chip_container_shape">?attr/shapeAppearanceCornerSmall</macro>
     <macro name="m3_comp_assist_chip_label_text_type">?attr/textAppearanceLabelLarge</macro>

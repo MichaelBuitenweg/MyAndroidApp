@@ -7,14 +7,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
 import com.example.myandroidapp.MainActivity
+import com.example.myandroidapp.databinding.DayCellBinding
 import com.example.myandroidapp.databinding.FragmentCalendarBinding
 import com.example.myandroidapp.viewmodel.CarViewModel
 import com.example.myandroidapp.viewmodel.ReservationViewModel
+import com.kizitonwose.calendar.core.DayPosition
+import java.time.YearMonth
+import com.kizitonwose.calendar.view.MonthDayBinder
+import com.kizitonwose.calendar.view.ViewContainer
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.util.Calendar
+import java.time.DayOfWeek
+import java.time.LocalDate
+import java.time.format.TextStyle
 import java.util.Locale
 
 class CalendarFragment : Fragment() {
@@ -24,17 +30,8 @@ class CalendarFragment : Fragment() {
     private val carViewModel: CarViewModel by viewModels({ requireActivity() }) { (requireActivity() as MainActivity).carViewModelFactory }
     private val reservationViewModel: ReservationViewModel by viewModels({ requireActivity() }) { (requireActivity() as MainActivity).reservationViewModelFactory }
 
-    private val monthDays = mutableListOf<Long>()
-    private var currentMonthCal = Calendar.getInstance().apply {
-        set(Calendar.DAY_OF_MONTH, 1)
-        set(Calendar.HOUR_OF_DAY, 0); set(Calendar.MINUTE,0); set(Calendar.SECOND,0); set(Calendar.MILLISECOND,0)
-    }
-
-    private val adapter = CalendarMonthAdapter(
-        onDayClick = { dayStart -> showReservationDialog(null, dayStart) },
-        onReservationDoubleTap = { reservation -> showReservationDialog(reservation) },
-        resolveCarColor = { carId -> carViewModel.uiState.value.cars.find { it.id == carId }?.color }
-    )
+    private val firstDayOfWeek: DayOfWeek = DayOfWeek.MONDAY
+    private var currentMonth: YearMonth = YearMonth.now()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentCalendarBinding.inflate(inflater, container, false)
@@ -42,40 +39,88 @@ class CalendarFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.recyclerCalendar.layoutManager = GridLayoutManager(requireContext(), 7)
-        binding.recyclerCalendar.adapter = adapter
-        binding.buttonPrevMonth.setOnClickListener { changeMonth(-1) }
-        binding.buttonNextMonth.setOnClickListener { changeMonth(1) }
-        generateMonthDays()
+        setupCalendar()
+        binding.buttonPrevMonth.setOnClickListener { updateMonth(currentMonth.minusMonths(1)) }
+        binding.buttonNextMonth.setOnClickListener { updateMonth(currentMonth.plusMonths(1)) }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            launch {
-                reservationViewModel.uiState.collectLatest { resState ->
-                    adapter.submit(monthDays, resState.reservations)
+            launch { reservationViewModel.uiState.collectLatest { binding.calendarView.notifyCalendarChanged() } }
+            launch { carViewModel.uiState.collectLatest { binding.calendarView.notifyCalendarChanged() } }
+        }
+    }
+
+    private fun setupCalendar() {
+        val startMonth = currentMonth.minusMonths(12)
+        val endMonth = currentMonth.plusMonths(12)
+        binding.calendarView.setup(startMonth, endMonth, firstDayOfWeek)
+        binding.calendarView.scrollToMonth(currentMonth)
+        binding.textMonth.text = monthLabel(currentMonth)
+
+        class DayContainer(view: View) : ViewContainer(view) {
+            val dayBinding = DayCellBinding.bind(view)
+            lateinit var date: LocalDate
+            init {
+                view.setOnClickListener {
+                    if (dayBinding.textDayNumber.text.isNotEmpty()) {
+                        showReservationDialog(null, date.toEpochDayMillis())
+                    }
+                }
+                view.setOnLongClickListener {
+                    showDayReservationsDialog(date)
+                    true
                 }
             }
-            launch {
-                carViewModel.uiState.collectLatest { _ -> adapter.notifyDataSetChanged() }
+        }
+
+        binding.calendarView.dayBinder = object : MonthDayBinder<DayContainer> {
+            override fun create(view: View): DayContainer {
+                val cell = LayoutInflater.from(view.context).inflate(com.example.myandroidapp.R.layout.day_cell, binding.calendarView, false)
+                return DayContainer(cell)
+            }
+            override fun bind(container: DayContainer, data: com.kizitonwose.calendar.core.CalendarDay) {
+                container.date = data.date
+                val dayText = if (data.position == DayPosition.MonthDate) data.date.dayOfMonth.toString() else ""
+                container.dayBinding.textDayNumber.text = dayText
+                val stripesView = container.dayBinding.stripesView
+                if (dayText.isEmpty()) {
+                    stripesView.setStripeColors(emptyList())
+                    return
+                }
+                val resList = reservationViewModel.uiState.value.reservations.filter { overlaps(it, data.date) }
+                val colors = resList.mapNotNull { r ->
+                    carViewModel.uiState.value.cars.find { it.id == r.carId }?.color
+                }.map { parseColorSafe(it) }
+                stripesView.setStripeColors(colors)
+                // Double tap stripes to edit first reservation (optional enhancement later)
             }
         }
     }
 
-    private fun generateMonthDays() {
-        monthDays.clear()
-        val cal = currentMonthCal.clone() as Calendar
-        val month = cal.get(Calendar.MONTH)
-        while (cal.get(Calendar.MONTH) == month) {
-            monthDays.add(cal.timeInMillis)
-            cal.add(Calendar.DAY_OF_MONTH, 1)
-        }
-        binding.textMonth.text = String.format(Locale.getDefault(), "%1\$tB %1\$tY", currentMonthCal.time)
-        adapter.submit(monthDays, reservationViewModel.uiState.value.reservations)
+    private fun showDayReservationsDialog(date: LocalDate) {
+        val reservations = reservationViewModel.uiState.value.reservations.filter { overlaps(it, date) }
+        if (reservations.isEmpty()) return
+        // For now just open first reservation to edit
+        showReservationDialog(reservations.first())
     }
 
-    private fun changeMonth(delta: Int) {
-        currentMonthCal.add(Calendar.MONTH, delta)
-        generateMonthDays()
+    private fun overlaps(res: com.example.myandroidapp.model.Reservation, date: LocalDate): Boolean {
+        val startDay = millisToLocalDate(res.startDate)
+        val endDay = millisToLocalDate(res.endDate)
+        return !date.isBefore(startDay) && !date.isAfter(endDay)
     }
+
+    private fun millisToLocalDate(ms: Long): LocalDate = java.time.Instant.ofEpochMilli(ms).atZone(java.time.ZoneId.systemDefault()).toLocalDate()
+    private fun LocalDate.toEpochDayMillis(): Long = this.atStartOfDay(java.time.ZoneId.systemDefault()).toInstant().toEpochMilli()
+
+    private fun parseColorSafe(hex: String): Int = try { android.graphics.Color.parseColor(hex) } catch (_: Exception) { android.graphics.Color.LTGRAY }
+
+    private fun updateMonth(month: YearMonth) {
+        currentMonth = month
+        binding.calendarView.scrollToMonth(month)
+        binding.textMonth.text = monthLabel(month)
+    }
+
+    private fun monthLabel(month: YearMonth): String = month.month.getDisplayName(TextStyle.FULL, Locale.getDefault()) + " " + month.year
 
     private fun showReservationDialog(reservation: com.example.myandroidapp.model.Reservation?, dayStart: Long? = null) {
         ReservationDialog(reservation, dayStart).show(parentFragmentManager, "ReservationDialog")
