@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="http://schemas.android.com/tools" xmlns:ns2="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="car_color_names">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Orange</item>
+        <item>Purple</item>
+        <item>Teal</item>
+        <item>Gray</item>
+    </string-array>
+    <string-array name="car_color_values">
+        <item>#F44336</item>
+        <item>#4CAF50</item>
+        <item>#2196F3</item>
+        <item>#FF9800</item>
+        <item>#9C27B0</item>
+        <item>#009688</item>
+        <item>#607D8B</item>
+    </string-array>
     <attr format="reference" name="animate_relativeTo"/>
     <attr format="reference" name="appBarLayoutStyle"/>
     <attr format="enum" name="arcMode">

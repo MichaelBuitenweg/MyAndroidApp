@@ -24,6 +24,10 @@
         "source": "com.example.myandroidapp-main-45:/drawable/ic_launcher_foreground.xml"
     },
     {
+        "merged": "com.example.myandroidapp-merged_res-43:/layout_item_calendar_day.xml.flat",
+        "source": "com.example.myandroidapp-main-45:/layout/item_calendar_day.xml"
+    },
+    {
         "merged": "com.example.myandroidapp-merged_res-43:/layout_activity_main.xml.flat",
         "source": "com.example.myandroidapp-main-45:/layout/activity_main.xml"
     },

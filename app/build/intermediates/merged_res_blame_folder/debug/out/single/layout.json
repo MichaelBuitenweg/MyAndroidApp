@@ -8,6 +8,10 @@
         "source": "com.example.myandroidapp-main-45:/layout/fragment_cars.xml"
     },
     {
+        "merged": "com.example.myandroidapp-mergeDebugResources-42:/layout/item_calendar_day.xml",
+        "source": "com.example.myandroidapp-main-45:/layout/item_calendar_day.xml"
+    },
+    {
         "merged": "com.example.myandroidapp-mergeDebugResources-42:/layout/item_day_reservations.xml",
         "source": "com.example.myandroidapp-main-45:/layout/item_day_reservations.xml"
     },

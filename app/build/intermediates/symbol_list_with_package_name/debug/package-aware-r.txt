@@ -77,6 +77,8 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
+array car_color_names
+array car_color_values
 attr actionBarDivider
 attr actionBarItemBackground
 attr actionBarPopupTheme
@@ -3058,9 +3060,11 @@ id bottom
 id bounce
 id buttonAddCar
 id buttonDelete
+id buttonNextMonth
 id buttonPanel
 id buttonPickEnd
 id buttonPickStart
+id buttonPrevMonth
 id cancel_button
 id center
 id centerCrop
@@ -3169,7 +3173,6 @@ id ignoreRequest
 id image
 id indeterminate
 id info
-id inputColor
 id inputLicense
 id inputModel
 id inputName
@@ -3305,6 +3308,7 @@ id rectangles
 id recyclerCalendar
 id recyclerCars
 id report_drawn
+id reservationDots
 id reverseSawtooth
 id right
 id rightToLeft
@@ -3349,6 +3353,7 @@ id snapMargins
 id spacer
 id special_effects_controller_view_tag
 id spinnerCar
+id spinnerColor
 id spline
 id split_action_bar
 id spread
@@ -3386,10 +3391,12 @@ id tag_window_insets_animation_callback
 id text
 id text2
 id textDate
+id textDayNumber
 id textEnd
 id textEndDate
 id textLicense
 id textModel
+id textMonth
 id textName
 id textReservations
 id textSpacerNoButtons
@@ -3577,6 +3584,7 @@ layout fragment_calendar
 layout fragment_cars
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_calendar_day
 layout item_car
 layout item_day_reservations
 layout m3_alert_dialog

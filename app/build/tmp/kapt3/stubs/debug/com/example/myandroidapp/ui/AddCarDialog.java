@@ -2,8 +2,8 @@ package com.example.myandroidapp.ui;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.text.InputFilter;
 import android.view.LayoutInflater;
+import android.widget.ArrayAdapter;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import com.example.myandroidapp.databinding.DialogAddCarBinding;

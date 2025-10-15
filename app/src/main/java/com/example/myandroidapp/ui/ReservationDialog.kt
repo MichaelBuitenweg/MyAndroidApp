@@ -27,8 +27,8 @@ class ReservationDialog(private val reservation: Reservation?, private val daySt
         var endDate = reservation?.endDate ?: startDate
 
         // Populate cars spinner
-        val cars = (carViewModel.uiState.value.cars)
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, cars.map { it.name })
+    val cars = (carViewModel.uiState.value.cars)
+    val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, cars.map { "${it.name} (${it.licenseNumber})" })
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerCar.adapter = adapter
         if (reservation != null) {

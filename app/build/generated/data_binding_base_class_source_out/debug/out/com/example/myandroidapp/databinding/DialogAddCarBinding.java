@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -20,9 +21,6 @@ public final class DialogAddCarBinding implements ViewBinding {
   private final ScrollView rootView;
 
   @NonNull
-  public final EditText inputColor;
-
-  @NonNull
   public final EditText inputLicense;
 
   @NonNull
@@ -31,13 +29,16 @@ public final class DialogAddCarBinding implements ViewBinding {
   @NonNull
   public final EditText inputName;
 
-  private DialogAddCarBinding(@NonNull ScrollView rootView, @NonNull EditText inputColor,
-      @NonNull EditText inputLicense, @NonNull EditText inputModel, @NonNull EditText inputName) {
+  @NonNull
+  public final Spinner spinnerColor;
+
+  private DialogAddCarBinding(@NonNull ScrollView rootView, @NonNull EditText inputLicense,
+      @NonNull EditText inputModel, @NonNull EditText inputName, @NonNull Spinner spinnerColor) {
     this.rootView = rootView;
-    this.inputColor = inputColor;
     this.inputLicense = inputLicense;
     this.inputModel = inputModel;
     this.inputName = inputName;
+    this.spinnerColor = spinnerColor;
   }
 
   @Override
@@ -67,12 +68,6 @@ public final class DialogAddCarBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.inputColor;
-      EditText inputColor = ViewBindings.findChildViewById(rootView, id);
-      if (inputColor == null) {
-        break missingId;
-      }
-
       id = R.id.inputLicense;
       EditText inputLicense = ViewBindings.findChildViewById(rootView, id);
       if (inputLicense == null) {
@@ -91,8 +86,14 @@ public final class DialogAddCarBinding implements ViewBinding {
         break missingId;
       }
 
-      return new DialogAddCarBinding((ScrollView) rootView, inputColor, inputLicense, inputModel,
-          inputName);
+      id = R.id.spinnerColor;
+      Spinner spinnerColor = ViewBindings.findChildViewById(rootView, id);
+      if (spinnerColor == null) {
+        break missingId;
+      }
+
+      return new DialogAddCarBinding((ScrollView) rootView, inputLicense, inputModel, inputName,
+          spinnerColor);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -4,7 +4,9 @@ package com.example.myandroidapp.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,12 +22,25 @@ public final class FragmentCalendarBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
+  public final Button buttonNextMonth;
+
+  @NonNull
+  public final Button buttonPrevMonth;
+
+  @NonNull
   public final RecyclerView recyclerCalendar;
 
-  private FragmentCalendarBinding(@NonNull LinearLayout rootView,
-      @NonNull RecyclerView recyclerCalendar) {
+  @NonNull
+  public final TextView textMonth;
+
+  private FragmentCalendarBinding(@NonNull LinearLayout rootView, @NonNull Button buttonNextMonth,
+      @NonNull Button buttonPrevMonth, @NonNull RecyclerView recyclerCalendar,
+      @NonNull TextView textMonth) {
     this.rootView = rootView;
+    this.buttonNextMonth = buttonNextMonth;
+    this.buttonPrevMonth = buttonPrevMonth;
     this.recyclerCalendar = recyclerCalendar;
+    this.textMonth = textMonth;
   }
 
   @Override
@@ -55,13 +70,32 @@ public final class FragmentCalendarBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.buttonNextMonth;
+      Button buttonNextMonth = ViewBindings.findChildViewById(rootView, id);
+      if (buttonNextMonth == null) {
+        break missingId;
+      }
+
+      id = R.id.buttonPrevMonth;
+      Button buttonPrevMonth = ViewBindings.findChildViewById(rootView, id);
+      if (buttonPrevMonth == null) {
+        break missingId;
+      }
+
       id = R.id.recyclerCalendar;
       RecyclerView recyclerCalendar = ViewBindings.findChildViewById(rootView, id);
       if (recyclerCalendar == null) {
         break missingId;
       }
 
-      return new FragmentCalendarBinding((LinearLayout) rootView, recyclerCalendar);
+      id = R.id.textMonth;
+      TextView textMonth = ViewBindings.findChildViewById(rootView, id);
+      if (textMonth == null) {
+        break missingId;
+      }
+
+      return new FragmentCalendarBinding((LinearLayout) rootView, buttonNextMonth, buttonPrevMonth,
+          recyclerCalendar, textMonth);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

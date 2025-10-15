@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Display names for predefined colors -->
+    <string-array name="car_color_names">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Orange</item>
+        <item>Purple</item>
+        <item>Teal</item>
+        <item>Gray</item>
+    </string-array>
+    <!-- Corresponding hex codes -->
+    <string-array name="car_color_values">
+        <item>#F44336</item>
+        <item>#4CAF50</item>
+        <item>#2196F3</item>
+        <item>#FF9800</item>
+        <item>#9C27B0</item>
+        <item>#009688</item>
+        <item>#607D8B</item>
+    </string-array>
+</resources>

@@ -1,5 +1,7 @@
 R_DEF: Internal format may change without notice
 local
+array car_color_names
+array car_color_values
 color black
 color ic_launcher_background
 color purple_200
@@ -11,21 +13,26 @@ color white
 drawable ic_launcher_foreground
 id buttonAddCar
 id buttonDelete
+id buttonNextMonth
 id buttonPickEnd
 id buttonPickStart
+id buttonPrevMonth
 id colorSwatch
-id inputColor
 id inputLicense
 id inputModel
 id inputName
 id recyclerCalendar
 id recyclerCars
+id reservationDots
 id spinnerCar
+id spinnerColor
 id tabLayout
 id textDate
+id textDayNumber
 id textEndDate
 id textLicense
 id textModel
+id textMonth
 id textName
 id textReservations
 id textStartDate
@@ -35,6 +42,7 @@ layout dialog_add_car
 layout dialog_reservation
 layout fragment_calendar
 layout fragment_cars
+layout item_calendar_day
 layout item_car
 layout item_day_reservations
 mipmap ic_launcher
