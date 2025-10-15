@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Android App</string>
+    <string name="welcome_message">Welcome to My Android App!</string>
+    <string name="button_submit">Submit</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="error_message">An error occurred. Please try again.</string>
+</resources>
